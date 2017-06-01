@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <a href="/">home </a>
+    <a href="/post">add post </a>
+    <% if (typeof user != 'undefined') { %>
+      <a href="/auth/logout">Logout </a>
+    <% } else { %>
+      <a href="/auth/login">login </a>
+      <a href="/auth/registration">registration </a>
+    <% } %>
+  </header>
+  <% if (typeof errors != 'undefined' && errors != 0){
+    for(let i in errors){ %>
+      <p><%=errors[i]%><p>
+  <%  }
+  } %>
+  <% for(let i in posts){ %>
+    <h1><a href=<%=`/post/${posts[i]._id}`%>><%=posts[i].title%></a></h1>
+    <p><%=posts[i].text%></p>
+  <% } %>
+</body>
+</html>

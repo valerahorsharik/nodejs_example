@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= post.title  %></title>
+</head>
+<body>
+  <header>
+    <a href="/">home </a>
+    <a href="/post">add post </a>
+    <% if (typeof user != 'undefined') { %>
+      <a href="/auth/logout">Logout </a>
+    <% } else { %>
+      <a href="/auth/login">login </a>
+      <a href="/auth/registration">registration </a>
+    <% } %>
+  </header>
+  <h1><%= post.title %></h1>
+  <p><%= post.text %></p>
+  <a href=<%=`/post/update/${post._id}` %> > Edit </a>
+  <form action="/post/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="postId" value=<%=`${post._id}`%>>
+    <input type="submit" value="Delete">
+  </form>
+</body>
+</html>
