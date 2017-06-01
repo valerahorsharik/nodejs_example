@@ -59,6 +59,7 @@ app.use('/auth/:any', (req, res, next) => {
     }
 })
 
+//set variables from session to every response
 app.use(function(req, res, next) {
   res.locals.user = req.session.user;
   res.locals.errors = req.session.errors;
